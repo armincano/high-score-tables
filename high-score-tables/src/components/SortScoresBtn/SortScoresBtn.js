@@ -1,9 +1,9 @@
 import React from 'react';
 
-function SortScoresBtn(props) {
+function SortScoresBtn({isSortDescendingScores, toggleSortScores}) {
     return (
-        <button onClick={() => props.toggleSortScores()}>
-            {(props.isSortDescendingScores) ? 'To Ascending Scores ⬆️' : 'To Descending Scores ⬇️'}
+        <button className='btn btn-primary' onClick={() => toggleSortScores()}>
+            {isSortDescendingScores ? 'To Ascending Scores ⬇️' : 'To Descending Scores ⬆️'}
         </button>
     );
 }

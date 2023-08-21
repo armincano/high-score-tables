@@ -25,10 +25,17 @@ function App() {
 			],
 		},
 	]);
-  const [isSortDescendingScores, setIsSortDescendingScores] = useState(true);
+	const [justScores, setJustScores] = useState([
+		{ n: "Sub", s: 9990 },
+		{ n: "lucy", s: "4134234" },
+		{ n: "DWH", s: 9999 },
+		{ n: "Hanif", s: 999999999 },
+	]);
+	const [isSortDescendingScores, setIsSortDescendingScores] = useState(true);
 
 	useEffect(() => {
 		setCountriesScores(data);
+		setJustScores(data.map((countryScores) => countryScores.scores).flat());
 	}, []);
 
 	const sortFetchDataByCountryName = (data) =>
@@ -46,21 +53,35 @@ function App() {
 		});
 	sortFetchDataByCountryName(countriesScores);
 
-  const toggleSortScores = () => (isSortDescendingScores===true) ? (setIsSortDescendingScores(false),console.log('asc')) : (setIsSortDescendingScores(true),console.log('desc'))
+	const toggleSortScores = () =>
+		isSortDescendingScores === true
+			? (setIsSortDescendingScores(false), console.log("asc"))
+			: (setIsSortDescendingScores(true), console.log("desc"));
 
-  const allScores = countriesScores.map(countryScores => countryScores.scores).flat()
-
-	const listCountries = countriesScores.map(countryScores => (
-		<HighScoreTable key={countryScores.name} scores={countryScores} isSortDescendingScores={isSortDescendingScores} />
+	const countryHighScoreTables = countriesScores.map((countryHighScores) => (
+		<HighScoreTable
+			key={countryHighScores.name}
+			countryHighScores={countryHighScores}
+			isSortDescendingScores={isSortDescendingScores}
+		/>
 	));
 
 	return (
-    <div className="App">
-      <SortScoresBtn isSortDescendingScores={isSortDescendingScores} toggleSortScores={toggleSortScores}/>
-      <WorldHighScoreTable allScores={allScores}/>
-      {listCountries}
-    </div>
-  )
+		<div className="App m-5">
+			<div className="fixed-right"><img src={require('./images/totoro-01.gif')} alt="totoro"></img></div>
+			<div className="fixed-left"><img src={require('./images/kodama-01.gif')} width={220} alt="kodama"></img></div>
+			<div className="img"><img src={require('./images/kiki-01.png')} width={220} alt="kiki"></img></div>
+			<SortScoresBtn
+				isSortDescendingScores={isSortDescendingScores}
+				toggleSortScores={toggleSortScores}
+			/>
+			<WorldHighScoreTable
+				justScores={justScores}
+				isSortDescendingScores={isSortDescendingScores}
+			/>
+			{countryHighScoreTables}
+		</div>
+	);
 }
 
 export default App;

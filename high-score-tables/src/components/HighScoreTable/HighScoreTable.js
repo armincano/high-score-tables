@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import PlayerScoreItem from "./PlayerScoreItem/PlayerScoreItem";
 
-function HighScoreTable(props) {
-	const [scores, setScores] = useState(
+function HighScoreTable({countryHighScores, isSortDescendingScores}) {
+	const [countryScores, setCountryScores] = useState(
 		{
 			"name": "Ethiopia",
 			"scores": [
@@ -16,8 +16,8 @@ function HighScoreTable(props) {
 
 
 	useEffect(() => {
-		setScores(props.scores)
-	}, [props]);
+		setCountryScores(countryHighScores)
+	}, [countryHighScores]);
 
 	const sortDescendingScores = scores => scores?.scores.sort(
 		(a,b) => b?.s - a?.s
@@ -26,22 +26,22 @@ function HighScoreTable(props) {
 		(a,b) => a?.s - b?.s
 	);
 	
-	(props.isSortDescendingScores) ? sortDescendingScores(scores) : sortAscendingScores(scores)
+	(isSortDescendingScores) ? sortDescendingScores(countryScores) : sortAscendingScores(countryScores)
 
-    const listScores = scores?.scores.map(score =>
+    const listScores = countryScores?.scores.map(score =>
         <PlayerScoreItem key={score.n+score.s} score={score}/>)
 
 	return (
        
-		<div>
-			<h1>{scores?.name}</h1>
+		<div className="card my-5 border-secondary">
+			<h1>{countryScores?.name}</h1>
 			<table className="table">
-				<thead>
+				{/* <thead>
 					<tr>
-						<th scope="col">name</th>
-						<th scope="col">score</th>
+						<th className="w-50" scope="col"><h2>name</h2></th>
+						<th className="w-50" scope="col"><h2>score</h2></th>
 					</tr>
-				</thead>
+				</thead> */}
 				<tbody>{listScores}</tbody>
 			</table>
 		</div>

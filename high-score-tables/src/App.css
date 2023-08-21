@@ -1,3 +1,74 @@
+:root{
+  --bs-body-line-height: 1.3 !important;
+
+  /* text color */
+  --bs-body-color: #fffbdb !important;
+  --bs-emphasis-color-rgb: 244, 66, 67 !important;
+  --bs-tertiary-color-rgb: 73, 91, 26 !important;
+  
+  /* bg color */
+  --bs-body-bg: #7776bc !important;
+  --bs-primary-rgb: 255, 231, 76;
+  --bs-secondary-rgb: 255, 225, 233;
+  --bs-secondary-bg-rgb: 255, 225, 233 !important;
+  --bs-tertiary-bg-rgb: 244, 204, 213 !important;
+
+  --bs-link-color: #ffe74c !important;
+  --bs-link-hover-color: #f4c242 !important;
+  --bs-highlight-bg: #fff3cd;
+
+  --bs-border-width: 3px;
+  --bs-border-style: solid;
+  --bs-border-color: #dee2e6;
+  --bs-border-radius: 2.375rem;
+
+  --bs-btn-active-bg: #ffe74c !important;
+  --bs-btn-hover-bg: #ffe74c;
+  --bs-btn-active-bg: #ffe74c;
+}
+
+.btn {
+  background-color: #7776bc;
+  border-color: #ffe74c;
+  color: #fff;
+  transition: all .7s;
+}
+.btn:hover {
+  color: #7776bc;
+  background-color: #fff;
+  border-color: #ffe74c;
+}
+.btn:active{
+  --bs-btn-active-bg: #ffe74c;
+  border-color: #ffe74c !important;
+}
+
+body{
+  margin-left: 7%;
+  margin-right: 7%;
+}
+
+h1{
+  font-family: 'Caveat', cursive;
+  font-size: 8.5vh;
+}
+
+h2{
+  font-family: 'Caveat', cursive;
+  font-size: 6.5vh;
+}
+
+body{
+  font-family: 'Averia Serif Libre', cursive;
+  font-size: 3.5vh;
+}
+
+table {
+  border-radius: 39px;
+  border-color: white;
+  overflow: hidden /* add this */
+ }
+
 .App {
   text-align: center;
 }
@@ -26,6 +97,18 @@
 
 .App-link {
   color: #61dafb;
+}
+
+.fixed-right{
+  position: fixed;
+  right: 0px;
+  bottom: -123px;
+}
+.fixed-left{
+  position: fixed;
+  left: 0px;
+  bottom: 0px;
+  z-index: 1;
 }
 
 @keyframes App-logo-spin {

@@ -1,9 +1,9 @@
-function PlayerScoreItem(props) {
+function PlayerScoreItem({score}) {
 
     return(
         <tr>
-            <td>{props.score?.n}</td>
-            <td>{props.score?.s}</td>
+            <td>{score?.n}</td>
+            <td>{score?.s}</td>
         </tr>
     )
 }
